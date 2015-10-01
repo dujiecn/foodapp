@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+						http://www.springframework.org/schema/task 
+						http://www.springframework.org/schema/task/spring-task-4.2.xsd 
+						http://www.springframework.org/schema/aop  
+       					http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+       					http://www.springframework.org/schema/tx  
+       					http://www.springframework.org/schema/tx/spring-tx-4.2.xsd  
+       					http://www.springframework.org/schema/mvc 
+       					http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+
+
+	<context:property-placeholder location="classpath:mybatis/db.properties"
+		ignore-unresolvable="true" />
+	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="location" value="classpath:mybatis/db.properties" /> </bean> -->
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="logAbandoned" value="${jdbc.logAbandoned}" />
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}" />
+		<property name="validationQuery" value="${jdbc.validationQuery}" />
+	</bean>
+
+
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
+	</bean>
+	<!-- mapper扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="org.dj.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+
+	<!-- 自增长id生成器.需要在表里创建t_id表 字段为id 类型为bigint 并且初始化一条数据 -->
+	<bean
+		class="org.springframework.jdbc.support.incrementer.MySQLMaxValueIncrementer">
+		<property name="incrementerName" value="sequence" />
+		<property name="columnName" value="id" />
+		<property name="cacheSize" value="100" />
+		<property name="paddingLength" value="5" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>

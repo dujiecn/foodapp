@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+	
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+	
+	
+
+	<!-- 配置别名 -->
+	<typeAliases>
+		<!-- 批量扫描别名 -->
+		<package name="org.dj.bean"/>
+	</typeAliases>
+</configuration>
