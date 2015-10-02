@@ -3,13 +3,23 @@
 <mapper namespace="org.dj.dao.UserDao">
 	<cache eviction="LRU" type="org.dj.common.cache.MybatisRedisCache" />
 
-	<select id="queryUserById" parameterType="string" resultType="userVo">
-		select * from user where userId=#{value}
-	</select>
+
 
 	<insert id="insertUser" parameterType="user">
 		insert into
 		user(userId,username,password,createTime,lastLoginTime,loginCount,wechat,qq,cell)
 		values(#{userId},#{username},#{password},#{createTime},#{lastLoginTime},#{loginCount},#{wechat},#{qq},#{cell})
 	</insert>
+
+	<select id="queryUserById" parameterType="string" resultType="userVo">
+		select * from user where userId=#{value}
+	</select>
+
+
+	<select id="queryUser" resultType="userVo">
+		select *
+		from user where username=#{0} and password=#{1}
+		
+	</select>
+
 </mapper>

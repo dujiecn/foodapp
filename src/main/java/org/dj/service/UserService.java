@@ -1,5 +1,7 @@
 package org.dj.service;
 
-public interface UserService {
+import org.dj.bean.vo.UserVo;
 
+public interface UserService {
+	public UserVo findUser(String username,String password) throws Exception;
 }

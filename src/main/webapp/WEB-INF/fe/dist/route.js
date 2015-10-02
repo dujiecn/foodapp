@@ -2,37 +2,32 @@ webpackJsonp([0,1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-	 初始化路由
+	/**
+	 * 路由
 	 */
 	"use strict";
 
 	var Router = __webpack_require__(1).Router;
 	var loginController = __webpack_require__(2);
-	var homeController = __webpack_require__(8);
+	var homeController = __webpack_require__(9);
 
 	var routes = {
 	    '/(login)?': loginController.loginPage,
 	    '/home': homeController.homePage
 	};
 
-	function before() {
-	    // 登录操作
-	    //throw new error();
-	}
-
-	function notfound() {
-	    console.error("route not found");
-	}
-
-	function after() {
-	    //console.log("after...");
-	}
-
-	Router(routes).configure({
-	    after: after,
-	    before: before,
-	    notfound: notfound
+	window.route = Router(routes);
+	route.configure({
+	    after: function after() {},
+	    before: function before() {
+	        //没有登录则跳转到登录页面
+	        if (!localStorage.getItem("USER") && location.hash.search(/\/(login)?$/) == -1) {
+	            location.hash = "/";
+	        }
+	    },
+	    notfound: function notfound() {
+	        console.error("route not found");
+	    }
 	}).init();
 
 /***/ },
@@ -772,13 +767,32 @@ webpackJsonp([0,1],[
 	/**
 	 * Created by dujie on 15/10/2.
 	 */
-	"use strict";
+	'use strict';
 
 	__webpack_require__(3);
 
+	var request = __webpack_require__(7);
+
 	function loginPage() {
-	    var tpl = __webpack_require__(7);
+	    var tpl = __webpack_require__(8);
 	    $(document.body).html(tpl());
+	    $('#loginBtn').on('click', loginSubmit);
+	}
+
+	function loginSubmit() {
+	    var data = $('#loginForm').serializeArray();
+	    request({
+	        url: '/user/login',
+	        data: data,
+	        success: function success(data) {
+	            if (data.code == 1) {
+	                localStorage.setItem('USER', JSON.stringify(data.data));
+	                location.hash = '/home';
+	            } else {
+	                console.log('login failed.');
+	            }
+	        }
+	    });
 	}
 
 	module.exports = {
@@ -1110,51 +1124,60 @@ webpackJsonp([0,1],[
 /* 7 */
 /***/ function(module, exports) {
 
-	module.exports = function (obj) {
-	obj || (obj = {});
-	var __t, __p = '';
-	with (obj) {
-	__p += '<div class="loginContainer">\n    <form>\n        <input type="text" name="username" value="">\n        <input type="password" name="password" value="">\n        <input type="submit" value="login" id="loginBtn">\n    </form>\n</div>';
-
-	}
-	return __p
-	}
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/**
 	 * Created by dujie on 15/10/2.
 	 */
 	"use strict";
 
-	__webpack_require__(10);
+	$.ajaxSetup({
+	    type: "GET",
+	    timeout: 60000,
+	    dataType: "json",
+	    error: function error(jqXHR, textStatus, errorThrown) {
+	        console.error(textStatus);
+	    }
+	});
 
-	function homePage() {
-	    var tpl = __webpack_require__(9);
-	    $(document.body).html(tpl({ name: "dj" }));
-	}
-
-	module.exports = {
-	    homePage: homePage
+	module.exports = function (obj) {
+	    //obj.url = 'http://localhost:8080/' + obj.url;
+	    return $.ajax(obj);
 	};
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports) {
 
 	module.exports = function (obj) {
 	obj || (obj = {});
 	var __t, __p = '';
 	with (obj) {
-	__p += '<div class="homeContainer">\n    <h1>this is home page,' +
-	((__t = (name)) == null ? '' : __t) +
-	'</h1>\n</div>';
+	__p += '<div class="loginContainer">\n    <form id="loginForm">\n        <input type="text" name="username" value="dujie">\n        <input type="password" name="password" value="123">\n        <input type="button" value="login" id="loginBtn">\n    </form>\n</div>';
 
 	}
 	return __p
 	}
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by dujie on 15/10/2.
+	 */
+	'use strict';
+
+	__webpack_require__(10);
+
+	function homePage() {
+	    var user = JSON.parse(localStorage.getItem('USER'));
+	    console.log(user);
+	    var tpl = __webpack_require__(12);
+	    $(document.body).html(tpl(user));
+	}
+
+	module.exports = {
+	    homePage: homePage
+	};
 
 /***/ },
 /* 10 */
@@ -1195,6 +1218,22 @@ webpackJsonp([0,1],[
 
 	// exports
 
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = function (obj) {
+	obj || (obj = {});
+	var __t, __p = '';
+	with (obj) {
+	__p += '<div class="homeContainer">\n    <h1>this is home page,' +
+	((__t = ( username )) == null ? '' : __t) +
+	'</h1>\n</div>';
+
+	}
+	return __p
+	}
 
 /***/ }
 ]);

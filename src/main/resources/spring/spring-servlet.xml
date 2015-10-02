@@ -17,7 +17,6 @@
        					http://www.springframework.org/schema/util 
        					http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
-
 	<context:component-scan base-package="org.dj.controller" />
 
 	<mvc:annotation-driven />
@@ -29,11 +28,20 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<!-- spring4 必须配置以下handler适配器才能返回json数据，spring3不配置就行。。为何？ -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</bean>
+
 
 	<!-- 静态文件 /WEB-INF/static/index.js 访问:http:localhost:8080/static/index.js -->
-	<mvc:resources location="/WEB-INF/views/" mapping="/views/**" />
-
-
-
-
+	<mvc:resources location="/WEB-INF/fe/" mapping="/**" />
 </beans>

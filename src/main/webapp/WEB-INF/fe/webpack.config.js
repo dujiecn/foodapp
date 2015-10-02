@@ -3,7 +3,7 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 
 module.exports = {
     entry: {
-        index: './route/index.js'
+        route: './route/index.js'
     },
     output: {
         path: './dist',
