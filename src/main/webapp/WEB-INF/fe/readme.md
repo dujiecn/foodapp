@@ -1,0 +1,3 @@
+此前端代码是通过webpack构建的单页面前端架构
+
+如果需要多页面需要在webpack.config.js配置多entry入口即可
