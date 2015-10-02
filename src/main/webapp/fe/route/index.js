@@ -1,16 +1,31 @@
 /*
-   初始化路由
+ 初始化路由
  */
 var Router = require("director").Router;
+var loginController = require("../controller/login.js");
+var homeController = require("../controller/home.js");
+
 
 var routes = {
-    '/index':index
+    '/(login)?': loginController.loginPage,
+    '/home': homeController.homePage
 };
 
-function index() {
-    alert("index func");
+function before() {
+    // 登录操作
+    //throw new error();
 }
 
-console.log(Router);
+function notfound() {
+    console.error("route not found");
+}
 
-Router(routes).init();
+function after() {
+    //console.log("after...");
+}
+
+Router(routes).configure({
+    after:after,
+    before: before,
+    notfound:notfound
+}).init();
