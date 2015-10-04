@@ -1,0 +1,100 @@
+@charset "utf-8";
+@headerHeight: 46px;
+
+.transformStyle(@arg:preserve-3d) {
+    -webkit-transform-style: @arg;
+    -moz-transform-style: @arg;
+    transform-style: @arg;
+}
+
+// 隐藏被旋转的元素的背面
+.backfaceVisibility(@arg:hidden) {
+    -webkit-backface-visibility: @arg;
+    -moz-backface-visibility: @arg;
+    backface-visibility: @arg;
+}
+
+.transform(@arg) {
+    -webkit-transform: @arguments;
+    -moz-transform: @arguments;
+    transform: @arguments;
+}
+
+.displayFlex() {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+}
+
+.flex(@arg:1) {
+    -webkit-flex: @arg;
+    -moz-flex: @arg;
+    flex: @arg;
+}
+
+.boxShadow(@arg) {
+    -webkit-box-shadow: @arg;
+    -moz-box-shadow: @arg;
+    box-shadow: @arg;
+}
+
+.flexFlow(@arg) {
+    -webkit-flex-flow: @arg;
+    -moz-flex-flow: @arg;
+    flex-flow: @arg;
+
+}
+
+.justifyContent(@arg:center) {
+    -webkit-justify-content: @arg;
+    -moz-justify-content: @arg;
+    justify-content: @arg;
+}
+
+.alignItems(@arg:center) {
+    -webkit-align-items: @arg;
+    -moz-align-items: @arg;
+    align-items: @arg;
+}
+
+.animation(@arg) {
+    -webkit-animation: @arg;
+    -moz-animation: @arg;
+    animation: @arg;
+}
+
+.borderRadius(@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.boxSizing(@arg:border-box) {
+    -webkit-box-sizing: @arg;
+    -moz-box-sizing: @arg;
+    box-sizing: @arg;
+}
+
+.calc(@prop;@val) {
+    @{prop}: -webkit-calc(~'@{val}');
+    @{prop}: calc(~'@{val}');
+
+}
+
+.transition(@arg) {
+    -webkit-transition: @arguments;
+    -moz-transition: @arguments;
+    transition: @arguments;
+}
+
+.animationDelay(@delay:0s) {
+    -webkit-animation-delay: @delay;
+    -moz-animation-delay: @delay;
+    animation-delay: @delay;
+}
+
+.userSelect(@arg) {
+    -webkit-user-select: @arg;
+    -moz-user-select: @arg;
+    user-select: @arg;
+}

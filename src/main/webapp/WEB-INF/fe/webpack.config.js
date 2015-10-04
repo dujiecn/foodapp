@@ -3,7 +3,8 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 
 module.exports = {
     entry: {
-        route: './route/index.js'
+        'route/index': './route/index.js',
+        'components/popbox/popbox':'./components/popbox/js/popbox.js'
     },
     output: {
         path: './dist',
