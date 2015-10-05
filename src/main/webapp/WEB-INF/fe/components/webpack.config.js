@@ -1,9 +1,10 @@
 var webpack = require('webpack');
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+//var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 
 module.exports = {
     entry: {
-        'popbox/popbox': './popbox/js/popbox.js'
+        'popbox/popbox': './popbox/js/popbox.js',
+        'loading/loading':'./loading/js/loading.js'
     },
     output: {
         path: './dist',
@@ -22,6 +23,6 @@ module.exports = {
             loader: 'babel',
             exclude: /node_modules/
         }]
-    },
-    plugins: [commonsPlugin]
+    }
+    //plugins: [commonsPlugin]
 }
