@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import url("../../../views/style/mixins");
 
 .spa-popbox {
     position: absolute;
@@ -7,6 +6,7 @@
     right: 0;
     bottom: 0;
     left: 0;
+    opacity: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
     .displayFlex();
@@ -14,8 +14,8 @@
     .alignItems(center);
 
     .spa-popbox-container {
-        @backgroundColor:rgb(233, 233, 233);
-        @activeBackgroundColor:#ccc;
+        @backgroundColor: rgb(233, 233, 233);
+        @activeBackgroundColor: #ccc;
 
         .displayFlex();
         .flexFlow(column nowrap);
@@ -26,13 +26,13 @@
         .borderRadius(.5em);
         overflow: hidden;
 
-        &>div {
+        & > div {
             .flex(1);
         }
 
         .spa-popbox-content {
             .msg {
-                text-indent:-2px;
+                text-indent: -2px;
                 padding: 18px 15px 10px;
                 text-align: center;
                 line-height: 20px;
@@ -53,7 +53,7 @@
                 .justifyContent(center);
                 .alignItems(center);
                 .transition(background-color .2s);
-                color:rgb(39, 103, 165);
+                color: rgb(39, 103, 165);
                 background-color: @backgroundColor;
 
                 &:active {
@@ -63,4 +63,52 @@
         }
 
     }
+}
+
+.displayFlex() {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+}
+
+.flex(@arg:1) {
+    -webkit-flex: @arg;
+    -moz-flex: @arg;
+    flex: @arg;
+}
+
+.justifyContent(@arg:center) {
+    -webkit-justify-content: @arg;
+    -moz-justify-content: @arg;
+    justify-content: @arg;
+}
+
+.alignItems(@arg:center) {
+    -webkit-align-items: @arg;
+    -moz-align-items: @arg;
+    align-items: @arg;
+}
+
+.flexFlow(@arg) {
+    -webkit-flex-flow: @arg;
+    -moz-flex-flow: @arg;
+    flex-flow: @arg;
+}
+
+.boxShadow(@arg) {
+    -webkit-box-shadow: @arg;
+    -moz-box-shadow: @arg;
+    box-shadow: @arg;
+}
+
+.borderRadius(@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.transition(@arg) {
+    -webkit-transition: @arguments;
+    -moz-transition: @arguments;
+    transition: @arguments;
 }

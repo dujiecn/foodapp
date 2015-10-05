@@ -3,8 +3,9 @@
  */
 require('../style/popbox.less');
 var tpl = require('../tpl/popbox.ejs');
-var touch = require('../../../bower_components/touch/touch.js');
-require('../../../bower_components/velocity/velocity.js');
+var touch = require('../../bower_components/touch/touch.js');
+require('../../bower_components/velocity/velocity.js');
+
 
 window.alert = function (msg) {
     var alertbox = $('.spa-popbox.alert');
@@ -15,18 +16,16 @@ window.alert = function (msg) {
 
         touch.on(alertbox.find('.submit'), 'tap', function (ev) {
             ev.stopPropagation();
-            close(alertbox,function() {alertbox.hide()});
+            close(alertbox);
         });
         touch.on(alertbox, 'tap', function (ev) {
-            close(alertbox,function() {$(this).hide()});
+            close(alertbox);
         });
     } else {
         alertbox.find('.msg').text(msg);
     }
-    //open(alertbox);
-    alertbox.show();
+    open(alertbox);
 };
-
 
 
 window.confirm = function (msg, callback) {
@@ -38,28 +37,36 @@ window.confirm = function (msg, callback) {
 
         touch.on(confirmbox.find('.submit'), 'tap', function (ev) {
             ev.stopPropagation();
-            close(confirmbox,function() {confirmbox.hide(),callback(true)});
+            close(confirmbox, function () {
+                confirmbox.hide(), callback(true)
+            });
         });
 
         touch.on(confirmbox.find('.cancel'), 'tap', function (ev) {
             ev.stopPropagation();
-            close(confirmbox,function() {confirmbox.hide(),callback(false)});
+            close(confirmbox, function () {
+                confirmbox.hide(), callback(false)
+            });
         });
         touch.on(confirmbox, 'tap', function (ev) {
-            close(confirmbox,function() {confirmbox.hide(),callback(false)});
+            close(confirmbox, function () {
+                callback(false)
+            });
         });
     } else {
         confirmbox.find('.msg').text(msg);
     }
-    //confirmbox.show();
-
-
+    open(confirmbox);
 };
 
 function open(container, callback) {
-    container.velocity({opacity:0.5,display:'block'},300,callback);
+    container.show().velocity({opacity: 0.8}, 300, callback);
 }
 
-function close(container,callback) {
-    container.velocity({opacity:0,display:'none'},300,callback);
+
+function close(container, callback) {
+    container.velocity({opacity: 0}, 300, function () {
+        container.hide();
+        callback && callback();
+    });
 }
