@@ -11,8 +11,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jackson.version>2.4.0</jackson.version>
-		<!-- <spring.version>4.2.1.RELEASE</spring.version> -->
-		<spring.version>3.2.14.RELEASE</spring.version>
+		<spring.version>4.2.1.RELEASE</spring.version>
+		<!-- <spring.version>3.2.14.RELEASE</spring.version> -->
 	</properties>
 
 	<dependencies>
@@ -22,6 +22,13 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>se.jiderhamn</groupId>
+			<artifactId>classloader-leak-prevention</artifactId>
+			<version>1.14.1</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>javax.servlet</groupId>

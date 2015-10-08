@@ -8,7 +8,7 @@
 		<setting name="cacheEnabled" value="true" />
 	</settings>
 
-	
+
 
 	<!-- 配置别名 -->
 	<typeAliases>
