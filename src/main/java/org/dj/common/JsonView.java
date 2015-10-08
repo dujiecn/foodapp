@@ -38,4 +38,8 @@ public class JsonView {
 		setMsg(msg);
 		setData(data);
 	}
+
+	public JsonView() {
+		this(1, "", null);
+	}
 }

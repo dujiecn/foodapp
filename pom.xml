@@ -226,6 +226,7 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.1.26</version>
 				<configuration>
+					<!-- <webDefaultXml>src/main/webapp/WEB-INF/web.xml</webDefaultXml> -->
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 					<webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
 					<contextPath>/</contextPath>

@@ -1,5 +1,6 @@
 package org.dj.common.cache;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -17,6 +18,12 @@ public final class MybatisRedisCache implements Cache {
 	private Log log = LogFactory.getLog(getClass());
 
 	private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+
+	/*
+	 * 不同的key下面的关联的表
+	 */
+
+	private static Map<String, Map<String, Object>> keysMap = new HashMap<>();
 
 	private final String KEY_PREFIX = "mybatis:cache:";
 
@@ -70,6 +77,12 @@ public final class MybatisRedisCache implements Cache {
 					log.debug("添加缓存==============>" + getKey() + "." + getHashKey(key));
 				}
 				jedis.hset(getKey().getBytes(), getHashKey(key).getBytes(), SerializeUtil.serialize(value));
+
+				// 保存加入缓存的关联的表
+				synchronized (keysMap) {
+					// select begin : end
+				}
+
 				return null;
 			}
 		});
@@ -118,14 +131,16 @@ public final class MybatisRedisCache implements Cache {
 		execute(new RedisCallback() {
 			public Object doWithRedis(Jedis jedis) {
 				if (log.isDebugEnabled()) {
-					log.debug("清空缓存==============>:" + getKeys());
+					log.debug("清空缓存==============>:" + getKey());
 				}
-				// jedis.del(getKey());
+				
+				 jedis.del(getKey());
 
-				Set<byte[]> keys = jedis.keys(getKeys().getBytes());
-				for (byte[] key : keys) {
-					jedis.del(key);
-				}
+//				Set<byte[]> keys = jedis.keys(getKeys().getBytes());
+//				for (byte[] key : keys) {
+//					jedis.del(key);
+//				}
+				
 				return null;
 			}
 		});

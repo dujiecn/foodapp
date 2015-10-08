@@ -6,8 +6,10 @@ import org.springframework.dao.DataAccessException;
 
 public interface UserDao {
 	public UserVo queryUserById(String userId) throws DataAccessException;
-	
-	public UserVo queryUser(String username,String password) throws DataAccessException;
-	
+
+	public UserVo queryUser(String username, String password) throws DataAccessException;
+
 	public void insertUser(User user) throws DataAccessException;
+
+	public void updateUser(User user) throws DataAccessException;
 }

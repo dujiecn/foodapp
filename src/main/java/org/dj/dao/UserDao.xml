@@ -12,14 +12,17 @@
 	</insert>
 
 	<select id="queryUserById" parameterType="string" resultType="userVo">
-		select * from user where userId=#{value}
+		select * from user where userId=#{value} 
 	</select>
 
 
 	<select id="queryUser" resultType="userVo">
 		select *
 		from user where username=#{0} and password=#{1}
-		
 	</select>
+	
+	<update id="updateUser" parameterType="user">
+		update user set username=#{username} where userId=#{userId}
+	</update>
 
 </mapper>
