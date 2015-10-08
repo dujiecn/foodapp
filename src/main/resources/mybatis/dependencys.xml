@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+	<statements>
+		<statement id="org.dj.dao.UserDao.updateUser">
+			<observer id="org.dj.dao.ResumeDao.queryResumeByUserId" />
+		</statement>
+	</statements>
+</dependencies>

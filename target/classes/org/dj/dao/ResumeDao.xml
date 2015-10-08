@@ -6,5 +6,5 @@
 	<select id="queryResumeByUserId" parameterType="string" resultType="resumeVo">
 		select a.name,b.username from resume a,user b where a.userId=b.userId and a.userId=#{value}
 	</select>
-
+	
 </mapper>

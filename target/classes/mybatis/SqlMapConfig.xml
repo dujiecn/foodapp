@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
 <configuration>
-	
+
 	<settings>
-		<setting name="lazyLoadingEnabled" value="true"/>
-		<setting name="aggressiveLazyLoading" value="false"/>
-		<setting name="cacheEnabled" value="true"/>
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="false" />
+		<setting name="cacheEnabled" value="true" />
 	</settings>
-	
-	
+
+
+
 
 	<!-- 配置别名 -->
 	<typeAliases>
 		<!-- 批量扫描别名 -->
-		<package name="org.dj.bean"/>
+		<package name="org.dj.bean" />
 	</typeAliases>
+
+	<!-- 解决缓存更新策略问题，见鬼，放到上面配置就报错？？ -->
+	<plugins>
+		<plugin interceptor="org.dj.common.cache.EnhancedCachingExecutor">
+			<property name="dependency" value="mybatis/dependencys.xml" />
+			<property name="cacheEnabled" value="true" />
+		</plugin>
+	</plugins>
+
 </configuration>

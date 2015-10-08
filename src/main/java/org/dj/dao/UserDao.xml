@@ -3,8 +3,6 @@
 <mapper namespace="org.dj.dao.UserDao">
 	<cache eviction="LRU" type="org.dj.common.cache.MybatisRedisCache" />
 
-
-
 	<insert id="insertUser" parameterType="user">
 		insert into
 		user(userId,username,password,createTime,lastLoginTime,loginCount,wechat,qq,cell)

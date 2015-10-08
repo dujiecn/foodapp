@@ -42,6 +42,10 @@ public class EnhancedCachingManagerImpl implements EnhancedCachingManager{
 		for(String observable:set)
 		{
 			Set<String> relatedStatements = observers.get(observable);
+			if(relatedStatements == null) {
+				break;
+			}
+			
 			for(String statementId:relatedStatements)
 			{
 				Cache cache = holds.get(statementId);
