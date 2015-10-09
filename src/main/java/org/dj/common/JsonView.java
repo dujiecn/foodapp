@@ -1,5 +1,8 @@
 package org.dj.common;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class JsonView {
 	private int code;
 	private String msg;
@@ -42,4 +45,5 @@ public class JsonView {
 	public JsonView() {
 		this(1, "", null);
 	}
+	
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="org.dj.dao.UserDao">
+	<cache eviction="LRU" type="org.dj.common.cache.MybatisRedisCache">
+	</cache>
+
+	<insert id="insertUser" parameterType="user">
+		insert into
+		user(userId,username,password,createTime,lastLoginTime,loginCount,wechat,qq,cell)
+		values(#{userId},#{username},#{password},#{createTime},#{lastLoginTime},#{loginCount},#{wechat},#{qq},#{cell})
+	</insert>
+
+	<select id="queryUserById" parameterType="string" resultType="userVo">
+		select * from user where userId=#{value}
+	</select>
+
+
+	<select id="queryUser" resultType="userVo">
+		select *
+		from user where
+		username=#{0} and password=#{1}
+	</select>
+
+	<update id="updateUser" parameterType="user">
+		update user set
+		username=#{username} where userId=#{userId}
+	</update>
+
+</mapper>
