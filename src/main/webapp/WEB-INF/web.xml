@@ -2,7 +2,7 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-	
+
 
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
@@ -56,20 +56,27 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	
+
 
 
 	<!-- 解决tomcat热部署的时候重启的时候有的线程没有来得及关闭造成莫名其妙的异常 -->
-	<!-- <listener>
-	  <listener-class>
-	    se.jiderhamn.classloader.leak.prevention.ClassLoaderLeakPreventor
-	  </listener-class>
-	</listener> -->
+	<!-- <listener> <listener-class> se.jiderhamn.classloader.leak.prevention.ClassLoaderLeakPreventor 
+		</listener-class> </listener> -->
 
 
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+		<cookie-config>
+			<http-only>true</http-only>
+		</cookie-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+
 
 </web-app>
