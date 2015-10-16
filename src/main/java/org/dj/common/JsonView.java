@@ -1,7 +1,8 @@
 package org.dj.common;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 
 public class JsonView {
 	private int code;
@@ -40,10 +41,14 @@ public class JsonView {
 		setCode(code);
 		setMsg(msg);
 		setData(data);
+//		Collections.synchronizedMap(new HashMap());
 	}
 
 	public JsonView() {
 		this(1, "", null);
+	}
+	
+	public static void main(String[] args) {
 	}
 	
 }

@@ -5,6 +5,7 @@ var Router = require("director").Router;
 var loginController = require("../controller/login.js");
 var homeController = require("../controller/home.js");
 
+//console.log('999')
 
 var routes = {
     '/(login)?': loginController.loginPage,

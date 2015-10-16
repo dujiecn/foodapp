@@ -4,12 +4,24 @@
 <html>
 <head>
 <meta charset=UTF-8">
-<title>Insert title here</title>
+<title></title>
+<script type="text/javascript">
+	if(width < 500) {
+		location.href = "mobile.html";
+	}else {
+		location.href = "pc.html";
+	}
+</script>
 </head>
 <body>
-	<form action="http://localhost:8081/user/00002" method="post">
+
+	这个页面什么都没有。。。只做跳转。。。
+
+
+
+	<!-- <form action="http://localhost:8081/user/00002" method="post">
 		<input type="hidden" value="put" name="_method">
 		<input type="submit" value="修改">
-	</form>
+	</form> -->
 </body>
 </html>

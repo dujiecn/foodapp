@@ -1,13 +1,12 @@
 var webpack = require('webpack');
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+var CommonsPlugin = webpack.optimize.CommonsChunkPlugin;
 
-module.exports = {
+var config = {
     entry: {
-        'route/index': './route/index.js',
-        'components/popbox/popbox':'./components/popbox/js/popbox.js'
+        'route/index': './route/index.js'
     },
     output: {
-        path: './dist',
+        path: __dirname + '/dist',
         filename: '[name].js'
     },
     module: {
@@ -24,5 +23,7 @@ module.exports = {
             exclude: /node_modules/
         }]
     },
-    plugins: [commonsPlugin]
-}
+    plugins: [new CommonsPlugin('common.js')]
+};
+
+module.exports = config;
