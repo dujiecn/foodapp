@@ -4,7 +4,7 @@ public class ServiceImpl implements Service {
 
 	@Override
 	public void doSome() {
-		System.err.println("do some service impl.");
+		System.out.println("doSome method.");
 	}
 
 }
