@@ -5,25 +5,23 @@ var Router = require("director").Router;
 var loginController = require("../controller/login.js");
 var homeController = require("../controller/home.js");
 
-//console.log('999')
-
 var routes = {
     '/(login)?': loginController.loginPage,
     '/home': homeController.homePage
 };
 
-window.route = Router(routes);
-route.configure({
+window.router = Router(routes);
+router.configure({
     after: function () {
     },
-    before: function before() {
+    before: function () {
         //没有登录则跳转到登录页面
         if (!localStorage.getItem("USER") && location.hash.search(/\/(login)?$/) == -1) {
-            location.hash = "/";
+            router.setRoute('/');
         }
     },
     notfound: function () {
-        console.error("route not found");
+        console.error("route not found.");
     }
 }).init();
 

@@ -11,24 +11,22 @@ webpackJsonp([0,1],[
 	var loginController = __webpack_require__(2);
 	var homeController = __webpack_require__(9);
 
-	//console.log('999')
-
 	var routes = {
 	    '/(login)?': loginController.loginPage,
 	    '/home': homeController.homePage
 	};
 
-	window.route = Router(routes);
-	route.configure({
+	window.router = Router(routes);
+	router.configure({
 	    after: function after() {},
 	    before: function before() {
 	        //没有登录则跳转到登录页面
 	        if (!localStorage.getItem("USER") && location.hash.search(/\/(login)?$/) == -1) {
-	            location.hash = "/";
+	            router.setRoute('/');
 	        }
 	    },
 	    notfound: function notfound() {
-	        console.error("route not found");
+	        console.error("route not found.");
 	    }
 	}).init();
 
@@ -1172,7 +1170,6 @@ webpackJsonp([0,1],[
 
 	function homePage() {
 	    var user = JSON.parse(localStorage.getItem('USER'));
-	    console.log(user);
 	    var tpl = __webpack_require__(12);
 	    $(document.body).html(tpl(user));
 	}

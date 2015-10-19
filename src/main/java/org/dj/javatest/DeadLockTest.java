@@ -15,7 +15,6 @@ public class DeadLockTest implements Runnable {
 
 	@Override
 	public void run() {
-		System.err.println(flag);
 		if (flag == 0) {
 			synchronized (o1) {
 				try {
