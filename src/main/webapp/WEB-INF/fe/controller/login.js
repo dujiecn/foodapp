@@ -1,17 +1,20 @@
 /**
  * Created by dujie on 15/10/2.
  */
-require('../views/style/login.less');
+require('../template/style/login.less');
 
-var request = require('../util/request.js');
+var request = require('../util/request');
 
 function loginPage() {
-    var tpl = require("../views/tpl/login.ejs");
+    var tpl = require("../template/login.ejs");
     $(document.body).html(tpl());
     $('#loginBtn').on('click', loginSubmit);
 }
 
 function loginSubmit() {
+    localStorage.setItem('USER', JSON.stringify({uid:200,username:'dj'}));
+    router.setRoute('/home');
+    return;
     var data = $('#loginForm').serializeArray();
     request({
         url: '/user/login',
@@ -19,7 +22,7 @@ function loginSubmit() {
         success: function (data) {
             if (data.code == 1) {
                 localStorage.setItem('USER', JSON.stringify(data.data));
-                location.hash = '/home';
+                router.setRoute('/home');
             } else {
                 console.log('login failed.');
             }

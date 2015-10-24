@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var CommonsPlugin = webpack.optimize.CommonsChunkPlugin;
 
 var config = {
+    watch:true,
     entry: {
         'route/index': './route/index.js'
     },

@@ -7,7 +7,8 @@ webpackJsonp([0,1],[
 	 */
 	"use strict";
 
-	var Router = __webpack_require__(1).Router;
+	var director = __webpack_require__(1);
+	var Router = director.Router;
 	var loginController = __webpack_require__(2);
 	var homeController = __webpack_require__(9);
 
@@ -16,19 +17,16 @@ webpackJsonp([0,1],[
 	    '/home': homeController.homePage
 	};
 
-	window.router = Router(routes);
+	var router = new Router(routes);
 	router.configure({
 	    after: function after() {},
-	    before: function before() {
-	        //没有登录则跳转到登录页面
-	        if (!localStorage.getItem("USER") && location.hash.search(/\/(login)?$/) == -1) {
-	            router.setRoute('/');
-	        }
-	    },
+	    before: function before() {},
 	    notfound: function notfound() {
 	        console.error("route not found.");
 	    }
 	}).init();
+
+	window.router = router;
 
 /***/ },
 /* 1 */
@@ -780,6 +778,9 @@ webpackJsonp([0,1],[
 	}
 
 	function loginSubmit() {
+	    localStorage.setItem('USER', JSON.stringify({ uid: 200, username: 'dj' }));
+	    router.setRoute('/home');
+	    return;
 	    var data = $('#loginForm').serializeArray();
 	    request({
 	        url: '/user/login',
@@ -787,7 +788,7 @@ webpackJsonp([0,1],[
 	        success: function success(data) {
 	            if (data.code == 1) {
 	                localStorage.setItem('USER', JSON.stringify(data.data));
-	                location.hash = '/home';
+	                router.setRoute('/home');
 	            } else {
 	                console.log('login failed.');
 	            }
