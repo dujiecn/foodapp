@@ -11,7 +11,7 @@ var config = {
         filename: '[name].js'
     },
     module: {
-        devtool: 'source-map',
+        devtool: '#source-map',// 不起作用？
         loaders: [{
             test: /\.ejs$/,
             loader: 'ejs'
