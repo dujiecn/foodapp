@@ -16,6 +16,8 @@ router.configure({
     after: function () {
     },
     before: function () {
+        // 解决路由跳转的时候滚动条不在顶部的bug
+        $(document).scrollTop(0);
     },
     notfound: function () {
         console.error("route not found.");

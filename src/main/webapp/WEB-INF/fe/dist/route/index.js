@@ -20,7 +20,10 @@ webpackJsonp([0,1],[
 	var router = new Router(routes);
 	router.configure({
 	    after: function after() {},
-	    before: function before() {},
+	    before: function before() {
+	        // 解决路由跳转的时候滚动条不在顶部的bug
+	        $(document).scrollTop(0);
+	    },
 	    notfound: function notfound() {
 	        console.error("route not found.");
 	    }
@@ -835,7 +838,7 @@ webpackJsonp([0,1],[
 
 
 	// module
-	exports.push([module.id, "@charset \"utf-8\";\n.loginContainer {\n  width: 800px;\n  height: 300px;\n  margin: 0 auto;\n}\n", ""]);
+	exports.push([module.id, "@charset \"utf-8\";\n.loginContainer {\n  margin: 800px auto;\n}\n", ""]);
 
 	// exports
 
@@ -1214,7 +1217,7 @@ webpackJsonp([0,1],[
 
 
 	// module
-	exports.push([module.id, "@charset \"utf-8\";\n.homeContainer {\n  background: #389;\n}\n", ""]);
+	exports.push([module.id, "@charset \"utf-8\";\n.homeContainer {\n  background: #389;\n  height: 800px;\n}\n", ""]);
 
 	// exports
 
