@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security:authentication-manager
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd ">
+	
+	<security:authentication-provider>
+		<security:password-encoder>
+			<security:salt-source ref="" user-property="salt"/>
+		</security:password-encoder>
+	</security:authentication-provider>
+	</security:authentication-manager>

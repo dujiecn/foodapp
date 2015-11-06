@@ -9,19 +9,19 @@
 	</settings>
 
 
-
-	<!-- 配置别名 -->
 	<typeAliases>
 		<!-- 批量扫描别名 -->
-		<package name="org.dj.bean" />
+		<package name="org.market.webproj.bean" />
 	</typeAliases>
 
+
 	<!-- 解决缓存更新策略问题，见鬼，放到上面配置就报错？？ -->
-	<plugins>
-		<plugin interceptor="org.dj.common.cache.EnhancedCachingExecutor">
+	<!-- <plugins>
+		<plugin interceptor="org.market.webproj.cache.EnhancedCachingExecutor">
 			<property name="dependency" value="mybatis/dependencys.xml" />
 			<property name="cacheEnabled" value="true" />
 		</plugin>
-	</plugins>
+	</plugins> -->
+
 
 </configuration>

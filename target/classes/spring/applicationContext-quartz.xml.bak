@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+						http://www.springframework.org/schema/task 
+						http://www.springframework.org/schema/task/spring-task-3.2.xsd 
+						http://www.springframework.org/schema/aop  
+       					http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+       					http://www.springframework.org/schema/tx  
+       					http://www.springframework.org/schema/tx/spring-tx-3.2.xsd  
+       					http://www.springframework.org/schema/mvc 
+       					http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+
+	<!-- 启动触发器的配置 -->
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- <ref bean="topicJobTrigger" /> -->
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- 同步话题房间在线人数任务的配置 -->
+	<bean id="topicJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<!-- job的配置 -->
+			<bean
+				class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+				<property name="targetObject">
+					<bean class="com.bbly.timer.TopicOnlineUserJob" />
+				</property>
+				<property name="targetMethod" value="work" />
+			</bean>
+		</property>
+		<property name="cronExpression">
+			<!-- 秒（0-59） 分钟（0-59） 小时（0-23） 天（0-31） 月（0-11） 天（1-7） 年份（1970-2099） -->
+			<value>0 0 0/2 * * ?</value>
+		</property>
+	</bean>
+
+
+</beans>

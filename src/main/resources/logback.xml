@@ -3,14 +3,14 @@
 	debug="false">
 
 	<property name="USER_HOME" value="logs" />
-	<property scope="context" name="FILE_NAME" value="mylog-logback" />
+	<property name="FILE_NAME" value="bbly-logback" scope="context" />
 	<timestamp key="byDay" datePattern="yyyy-MM-dd" />
 
 
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{38} - %msg%n
 			</pattern>
 		</encoder>
 	</appender>
@@ -34,14 +34,14 @@
 			<maxFileSize>5MB</maxFileSize>
 		</triggeringPolicy>
 		<encoder>
-			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
+			<pattern>%-4relative [%thread] %-5level %logger{80} - %msg%n
 			</pattern>
 		</encoder>
 	</appender>
 
 
 
-	<logger name="org.dj" level="debug" additivity="true">
+	<logger name="org.market" level="debug" additivity="true">
 		<appender-ref ref="file" />
 	</logger>
 

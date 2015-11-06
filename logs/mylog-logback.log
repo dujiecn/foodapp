@@ -2664,3 +2664,29 @@
 280  [main] INFO  org.dj.test.TestSlf4jLog - info=====
 281  [main] WARN  org.dj.test.TestSlf4jLog - warn=====
 281  [main] ERROR org.dj.test.TestSlf4jLog - error===
+3000 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 获取缓存==============>mybatis:cache:org.dj.dao.ResumeDao.9991b8b65d2d84a1247508696aa1b22f
+3003 [main] DEBUG org.dj.dao.ResumeDao - Cache Hit Ratio [org.dj.dao.ResumeDao]: 0.0
+3253 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - ==>  Preparing: select a.name,b.username from resume a,user b where a.userId=b.userId and a.userId=? 
+3276 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - ==> Parameters: 00002(String)
+3289 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - <==      Total: 0
+3292 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 添加缓存==============>mybatis:cache:org.dj.dao.ResumeDao.9991b8b65d2d84a1247508696aa1b22f
+2630 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 获取缓存==============>mybatis:cache:org.dj.dao.ResumeDao.9991b8b65d2d84a1247508696aa1b22f
+2633 [main] DEBUG org.dj.dao.ResumeDao - Cache Hit Ratio [org.dj.dao.ResumeDao]: 1.0
+2961 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 获取缓存==============>mybatis:cache:org.dj.dao.ResumeDao.9991b8b65d2d84a1247508696aa1b22f
+2965 [main] DEBUG org.dj.dao.ResumeDao - Cache Hit Ratio [org.dj.dao.ResumeDao]: 0.0
+3227 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - ==>  Preparing: select a.name,b.username from resume a,user b where a.userId=b.userId and a.userId=? 
+3249 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - ==> Parameters: 00002(String)
+3264 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - <==      Total: 0
+3267 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 添加缓存==============>mybatis:cache:org.dj.dao.ResumeDao.9991b8b65d2d84a1247508696aa1b22f
+2873 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 获取缓存==============>mybatis:cache:org.dj.dao.ResumeDao.9991b8b65d2d84a1247508696aa1b22f
+2875 [main] DEBUG org.dj.dao.ResumeDao - Cache Hit Ratio [org.dj.dao.ResumeDao]: 0.0
+3137 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - ==>  Preparing: select a.name,b.username from resume a,user b where a.userId=b.userId and a.userId=? 
+3161 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - ==> Parameters: 00002(String)
+3176 [main] DEBUG o.d.d.ResumeDao.queryResumeByUserId - <==      Total: 1
+3180 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 添加缓存==============>mybatis:cache:org.dj.dao.ResumeDao.9991b8b65d2d84a1247508696aa1b22f
+2883 [main] DEBUG org.dj.dao.UserDao.updateUser - ==>  Preparing: update user set username=? where userId=? 
+2909 [main] DEBUG org.dj.dao.UserDao.updateUser - ==> Parameters: abc(String), 00002(String)
+2911 [main] DEBUG org.dj.dao.UserDao.updateUser - <==    Updates: 1
+2932 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 清空缓存==============>:mybatis:cache:org.dj.dao.UserDao
+2630 [main] DEBUG o.dj.common.cache.MybatisRedisCache - 获取缓存==============>mybatis:cache:org.dj.dao.ResumeDao.9991b8b65d2d84a1247508696aa1b22f
+2636 [main] DEBUG org.dj.dao.ResumeDao - Cache Hit Ratio [org.dj.dao.ResumeDao]: 1.0

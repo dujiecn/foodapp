@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+						http://www.springframework.org/schema/task 
+						http://www.springframework.org/schema/task/spring-task-3.2.xsd 
+						http://www.springframework.org/schema/aop  
+       					http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+       					http://www.springframework.org/schema/mvc 
+       					http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+       					http://www.springframework.org/schema/util 
+       					http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- 扫描控制器包的注解 -->
+	<context:component-scan base-package="org.market.*.controller" />
+
+
+	<!-- 使用该注解代替别的需要加载的RequestMappingHandlerMapping，RequestMappingHandlerAdapter，并且自动加载json支持 -->
+	<mvc:annotation-driven />
+
+
+	<!-- 静态文件访问 不走mapping -->
+	<mvc:resources location="/WEB-INF/fe/" mapping="/fe/**" />
+
+
+
+	<!-- 默认的jsp视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/fe/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 拦截器 -->
+	<!-- <mvc:interceptors>
+		多个拦截器顺序执行 登录认证拦截器
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/admin/toLogin"/>
+			<mvc:exclude-mapping path="/admin/login"/>
+			<mvc:exclude-mapping path="/gov/toLogin"/>
+			<mvc:exclude-mapping path="/gov/login"/>
+			<mvc:exclude-mapping path="/static/**"/>
+			<mvc:exclude-mapping path="/views/**"/>
+			<mvc:exclude-mapping path="/uploadfile/**"/>
+			<bean class="com.bbly.common.LoginInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.bbly.common.URLInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+
+</beans>

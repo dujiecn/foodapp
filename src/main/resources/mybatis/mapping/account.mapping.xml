@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="org.market.webproj.mapper.AccountMapper">
+	<!-- <cache eviction="LRU" type="org.market.webproj.cache.MybatisRedisCache" /> -->
+	<cache></cache>
+	
+	<update id="updateAccountById" parameterType="account" >
+		update account set accountName = #{accountName} where userId=#{userId}
+	</update>
+	
+	
+</mapper>
