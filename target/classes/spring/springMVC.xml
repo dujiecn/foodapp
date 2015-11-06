@@ -18,7 +18,7 @@
        					http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
 	<!-- 扫描控制器包的注解 -->
-	<context:component-scan base-package="org.market.*.controller" />
+	<context:component-scan base-package="org.market.foodapp.controller" />
 
 
 	<!-- 使用该注解代替别的需要加载的RequestMappingHandlerMapping，RequestMappingHandlerAdapter，并且自动加载json支持 -->

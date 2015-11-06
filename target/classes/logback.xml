@@ -41,7 +41,7 @@
 
 
 
-	<logger name="org.market" level="debug" additivity="true">
+	<logger name="org.market.foodapp" level="debug" additivity="true">
 		<appender-ref ref="file" />
 	</logger>
 

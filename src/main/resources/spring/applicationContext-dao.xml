@@ -50,7 +50,7 @@
 	</bean>
 	<!-- mapper扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.market.webproj.mapper" />
+		<property name="basePackage" value="org.market.foodapp.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	<!-- 自增长id生成器.需要在表里创建t_id表 字段为id 类型为bigint 并且初始化一条数据 -->

@@ -11,7 +11,7 @@
 
 	<typeAliases>
 		<!-- 批量扫描别名 -->
-		<package name="org.market.webproj.bean" />
+		<package name="org.market.foodapp.bean" />
 	</typeAliases>
 
 

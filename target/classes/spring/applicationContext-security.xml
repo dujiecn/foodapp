@@ -50,10 +50,9 @@
 			</security:password-encoder>
 		</security:authentication-provider>
 	</security:authentication-manager>
-	<bean id="account" class="org.market.webproj.bean.Account" />
 	<bean id="passwordEncoder"
 		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
-	<bean id="customUserDetailsService" class="org.market.webproj.util.CustomUserDetailsService" />
+	<bean id="customUserDetailsService" class="org.market.foodapp.util.CustomUserDetailsService" />
 	
 	
 	<!-- <security:authentication-manager>

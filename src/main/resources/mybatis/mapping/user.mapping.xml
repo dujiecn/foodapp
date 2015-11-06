@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="org.market.webproj.mapper.UserMapper">
+<mapper namespace="org.market.foodapp.mapper.UserMapper">
 	<!-- <cache  type="org.market.webproj.cache.MybatisRedisCache" /> -->
 	<cache></cache>	
 
-	<resultMap type="org.market.webproj.bean.vo.UserVO" id="userVOResultMap">
+	<resultMap type="org.market.foodapp.bean.vo.UserVO" id="userVOResultMap">
 		<id column="userId" property="userId" />
 		<result column="username" property="username" />
-		<association property="account" javaType="org.market.webproj.bean.Account">
+		<association property="account" javaType="org.market.foodapp.bean.Account">
 			<result column="accountName" property="accountName"/>
 		</association>
 	</resultMap>

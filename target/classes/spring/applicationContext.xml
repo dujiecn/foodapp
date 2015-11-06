@@ -37,5 +37,5 @@
 	</bean>
 
 
-	<bean class="org.market.webproj.exception.IExceptionHandlerResolver" />
+	<bean class="org.market.foodapp.exception.IExceptionHandlerResolver" />
 </beans>
