@@ -1,8 +1,7 @@
 .classpath
-.project/
+.project
 .settings/
 *.DS_Store
 *.idea
-./target/*
 /target
-
+/logs
