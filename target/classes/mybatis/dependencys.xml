@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dependencies>
-	<statements>
-		<statement id="org.market.webproj.AccountMapper.updateAccountById">
-			<observer id="org.market.webproj.UserMapper.queryUserById" />
-		</statement>
-	</statements>
-</dependencies>
